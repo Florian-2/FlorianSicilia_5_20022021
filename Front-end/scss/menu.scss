@@ -1,0 +1,25 @@
+header
+{
+    width: 100%;
+
+    .container-menu
+    {
+        width: 100%;
+        padding: 0 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #f3e9f1;
+        
+        img
+        {
+            height: 60px;
+        }
+
+        svg
+        {
+            min-width: 30px;
+            width: 30px;
+        }
+    }
+}

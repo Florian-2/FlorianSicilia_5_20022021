@@ -1,0 +1,22 @@
+header {
+  width: 100%;
+}
+
+header .container-menu {
+  width: 100%;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3e9f1;
+}
+
+header .container-menu img {
+  height: 60px;
+}
+
+header .container-menu svg {
+  min-width: 30px;
+  width: 30px;
+}
+/*# sourceMappingURL=menu.css.map */
