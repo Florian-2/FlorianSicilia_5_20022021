@@ -1,0 +1,114 @@
+footer {
+  width: 100%;
+  height: 100px;
+  background-color: #f3e9f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+footer .conteneur-text {
+  width: 350px;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .conteneur-text ul {
+  display: flex;
+  gap: 20px;
+}
+
+footer .conteneur-text ul li {
+  font-size: 25px;
+  cursor: pointer;
+}
+
+header {
+  height: auto;
+}
+
+section {
+  max-width: 1300px;
+  margin: 100px auto;
+  padding: 10px;
+}
+
+section .conteneur-grid {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "produit form";
+  gap: 40px;
+}
+
+section .conteneur-grid .conteneur-produit {
+  grid-area: "produit";
+  display: flex;
+  flex-direction: column;
+  border-radius: 7px;
+  overflow: hidden;
+  box-shadow: 2px 2px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+section .conteneur-grid .conteneur-produit .conteneur-img {
+  width: 100%;
+  height: 100%;
+}
+
+section .conteneur-grid .conteneur-produit .conteneur-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section .conteneur-grid .conteneur-produit .conteneur-texte-produit {
+  padding: 10px;
+}
+
+section .conteneur-grid .conteneur-form {
+  width: 90%;
+  padding: 10px;
+  grid-area: "form";
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+section .conteneur-grid .conteneur-form form {
+  display: flex;
+  flex-direction: column;
+}
+
+section .conteneur-grid .conteneur-form input[type=submit] {
+  cursor: pointer;
+  border: 2px solid #f3e9f1;
+  background-color: white;
+  padding: 7px;
+  border-radius: 7px;
+}
+
+section .conteneur-grid .conteneur-form input[type=submit]:hover {
+  background-color: #f3e9f1;
+}
+
+@media screen and (max-width: 700px) {
+  section .conteneur-grid {
+    grid-template-columns: 80%;
+    grid-template-rows: repeat(2, minmax(300px, 1fr));
+    grid-template-areas: "produit" "form";
+    justify-content: center;
+  }
+  section .conteneur-grid .conteneur-form {
+    margin: auto;
+    min-height: 400px;
+    align-items: stretch;
+    justify-content: space-around;
+  }
+}
+/*# sourceMappingURL=produit.css.map */
