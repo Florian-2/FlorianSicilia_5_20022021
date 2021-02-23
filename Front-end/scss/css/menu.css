@@ -1,5 +1,7 @@
 header {
   width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 header .container-menu {
@@ -15,8 +17,11 @@ header .container-menu img {
   height: 60px;
 }
 
-header .container-menu svg {
-  min-width: 30px;
-  width: 30px;
+header .container-menu a {
+  color: black;
+}
+
+header .container-menu a i {
+  font-size: 25px;
 }
 /*# sourceMappingURL=menu.css.map */

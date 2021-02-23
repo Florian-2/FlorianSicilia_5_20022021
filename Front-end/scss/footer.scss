@@ -1,0 +1,33 @@
+@import 'variable.scss';
+
+footer
+{
+    width: 100%;
+    height: 100px;
+    background-color: $primaire;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+
+    .conteneur-text
+    {
+        width: 350px;
+        max-width: 500px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        ul
+        {
+            display: flex;
+            gap: 20px;
+
+            li
+            {                    
+                font-size: 25px;
+                cursor: pointer;
+            }
+        }
+    }
+}
