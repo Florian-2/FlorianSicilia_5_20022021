@@ -36,6 +36,7 @@
         h1
         {
             font-size: 40px;
+            text-shadow: 3px 3px rgba($color: #000000, $alpha: 0.3);
         }
 
         p
@@ -62,7 +63,7 @@ main
     section
     {
         width: 100%;
-        padding: 10px;
+        padding: 15px;
 
         .conteneur-grid
         {
@@ -99,6 +100,11 @@ main
                 .conteneur-texte
                 {
                     padding: 10px;
+
+                    h3
+                    {
+                        padding-bottom: 7px;
+                    }
                 }
             }
         }

@@ -74,7 +74,7 @@ section .conteneur-grid .conteneur-form {
   padding: 10px;
   grid-area: "form";
   display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 45%));
+  grid-template-columns: repeat(2, minmax(100px, 45%));
   grid-template-rows: 50% 50%;
   justify-content: center;
 }
@@ -112,16 +112,13 @@ section .conteneur-grid .conteneur-form input[type=submit]:hover {
 
 @media screen and (max-width: 700px) {
   section .conteneur-grid {
-    grid-template-columns: 80%;
-    grid-template-rows: repeat(2, minmax(300px, 1fr));
+    grid-template-columns: 90%;
+    grid-template-rows: repeat(2, minmax(200px, 1fr));
     grid-template-areas: "produit" "form";
     justify-content: center;
   }
-  section .conteneur-grid .conteneur-form {
-    margin: auto;
-    min-height: 400px;
-    align-items: stretch;
-    justify-content: space-around;
+  section .conteneur-grid .conteneur-produit, section .conteneur-grid .conteneur-form {
+    width: 100%;
   }
 }
 /*# sourceMappingURL=produit.css.map */

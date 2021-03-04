@@ -32,6 +32,7 @@
 
 .background-img .conteneur-text h1 {
   font-size: 40px;
+  text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .background-img .conteneur-text p {
@@ -53,7 +54,7 @@ main {
 
 main section {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
 }
 
 main section .conteneur-grid {
@@ -87,5 +88,9 @@ main section .conteneur-grid .carte .conteneur-img img {
 
 main section .conteneur-grid .carte .conteneur-texte {
   padding: 10px;
+}
+
+main section .conteneur-grid .carte .conteneur-texte h3 {
+  padding-bottom: 7px;
 }
 /*# sourceMappingURL=accueil.css.map */
