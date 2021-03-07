@@ -1,9 +1,32 @@
 @import 'variable.scss';
 @import 'footer.scss';
 
+body
+{
+    position: relative;
+}
+
+main
+{
+    min-height: 70vh;
+}
+
+footer
+{
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 header
 {
     height: auto;
+}
+main
+{
+    padding-bottom: 20px;
 }
 
 section
@@ -11,6 +34,7 @@ section
     max-width: 1300px;
     margin: 100px auto;
     padding: 10px;
+    
 
     .conteneur-grid
     {
@@ -23,6 +47,7 @@ section
 
         .conteneur-produit
         {
+            
             grid-area: "produit";
             display: flex;
             flex-direction: column;
@@ -46,6 +71,9 @@ section
             .conteneur-texte-produit
             {
                 padding: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
             }
         }
 
@@ -72,6 +100,27 @@ section
                 flex-direction: column;
                 justify-content: space-between;
                 align-content: flex-start;
+
+                .btn_link
+                {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    a
+                    {
+                        display: inline-block;
+                        width: 45%;
+                        text-align: center;
+                        padding: 8px;
+                        background-color: $primaire;
+                        border: 2px solid $primaire;
+                        color: black;
+                        border-radius: 7px;
+                        font-size: 16px;
+                    }
+                }
             }
 
             input[type=number]
@@ -81,12 +130,14 @@ section
 
             input[type=submit]
             {
+                font-size: 16px;
                 cursor: pointer;
                 border: 2px solid $primaire;
                 background-color: white;
-                padding: 7px;
+                padding: 8px;
                 border-radius: 7px;
                 height: 35px;
+                width: 45%;
                 transition: background-color 300ms;
 
                 &:hover

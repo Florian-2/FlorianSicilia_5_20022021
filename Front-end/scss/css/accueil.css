@@ -31,12 +31,17 @@
 }
 
 .background-img .conteneur-text h1 {
-  font-size: 40px;
+  font-family: 'Dancing Script', cursive;
+  font-size: 60px;
+  font-weight: bold;
   text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .background-img .conteneur-text p {
   line-height: 1.5;
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
 }
 
 .background-img .conteneur-text a {
@@ -92,5 +97,9 @@ main section .conteneur-grid .carte .conteneur-texte {
 
 main section .conteneur-grid .carte .conteneur-texte h3 {
   padding-bottom: 7px;
+}
+
+main section .conteneur-grid .carte .conteneur-texte p {
+  font-size: 18px;
 }
 /*# sourceMappingURL=accueil.css.map */

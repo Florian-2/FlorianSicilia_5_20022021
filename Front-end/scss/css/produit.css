@@ -26,8 +26,28 @@ footer .conteneur-text ul li {
   cursor: pointer;
 }
 
+body {
+  position: relative;
+}
+
+main {
+  min-height: 70vh;
+}
+
+footer {
+  position: absolute;
+  top: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 header {
   height: auto;
+}
+
+main {
+  padding-bottom: 20px;
 }
 
 section {
@@ -67,6 +87,9 @@ section .conteneur-grid .conteneur-produit .conteneur-img img {
 
 section .conteneur-grid .conteneur-produit .conteneur-texte-produit {
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 section .conteneur-grid .conteneur-form {
@@ -92,17 +115,38 @@ section .conteneur-grid .conteneur-form form {
   align-content: flex-start;
 }
 
+section .conteneur-grid .conteneur-form form .btn_link {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+section .conteneur-grid .conteneur-form form .btn_link a {
+  display: inline-block;
+  width: 45%;
+  text-align: center;
+  padding: 8px;
+  background-color: #f3e9f1;
+  border: 2px solid #f3e9f1;
+  color: black;
+  border-radius: 7px;
+  font-size: 16px;
+}
+
 section .conteneur-grid .conteneur-form input[type=number] {
   height: 35px;
 }
 
 section .conteneur-grid .conteneur-form input[type=submit] {
+  font-size: 16px;
   cursor: pointer;
   border: 2px solid #f3e9f1;
   background-color: white;
-  padding: 7px;
+  padding: 8px;
   border-radius: 7px;
   height: 35px;
+  width: 45%;
   transition: background-color 300ms;
 }
 
