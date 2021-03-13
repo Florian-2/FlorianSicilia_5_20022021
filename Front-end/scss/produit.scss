@@ -74,6 +74,17 @@ section
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
+
+                h3
+                {
+                    font-size: 18px;
+                }
+
+                p:nth-child(3)
+                {
+                    font-weight: bold;
+                    font-size: 16px;
+                }
             }
         }
 
@@ -126,9 +137,12 @@ section
             input[type=number]
             {
                 height: 35px;
+                padding: 5px;
+                border: 1px solid silver;
+                border-radius: 7px;
             }
 
-            input[type=submit]
+            input[type=button]
             {
                 font-size: 16px;
                 cursor: pointer;

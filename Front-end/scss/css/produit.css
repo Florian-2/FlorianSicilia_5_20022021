@@ -92,6 +92,15 @@ section .conteneur-grid .conteneur-produit .conteneur-texte-produit {
   gap: 10px;
 }
 
+section .conteneur-grid .conteneur-produit .conteneur-texte-produit h3 {
+  font-size: 18px;
+}
+
+section .conteneur-grid .conteneur-produit .conteneur-texte-produit p:nth-child(3) {
+  font-weight: bold;
+  font-size: 16px;
+}
+
 section .conteneur-grid .conteneur-form {
   width: 90%;
   padding: 10px;
@@ -136,9 +145,12 @@ section .conteneur-grid .conteneur-form form .btn_link a {
 
 section .conteneur-grid .conteneur-form input[type=number] {
   height: 35px;
+  padding: 5px;
+  border: 1px solid silver;
+  border-radius: 7px;
 }
 
-section .conteneur-grid .conteneur-form input[type=submit] {
+section .conteneur-grid .conteneur-form input[type=button] {
   font-size: 16px;
   cursor: pointer;
   border: 2px solid #f3e9f1;
@@ -150,7 +162,7 @@ section .conteneur-grid .conteneur-form input[type=submit] {
   transition: background-color 300ms;
 }
 
-section .conteneur-grid .conteneur-form input[type=submit]:hover {
+section .conteneur-grid .conteneur-form input[type=button]:hover {
   background-color: #f3e9f1;
 }
 

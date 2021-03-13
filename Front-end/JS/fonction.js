@@ -7,7 +7,7 @@ const messErrRequest = () =>
 
 const tagHtml = (tag, content, selectPosition, place) =>
 {
-    let element1 = document.createElement(tag);
+    const element1 = document.createElement(tag);
     element1.innerHTML = content;
     let tagPosition = document.querySelector(selectPosition);
 

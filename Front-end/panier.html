@@ -22,7 +22,7 @@
 				<img src="logo_orinoco.png" alt="Logo Orinico" />
 			</a>
 
-			<a href="#">
+			<a href="panier.html" class="panier_nb">
 				<i class="fas fa-shopping-cart"></i>
 			</a>
 		</div>
@@ -32,33 +32,52 @@
 
     <main>
         
+		<section class="container">
+
+			<div class="container_panier">
+				<h2>Panier</h2>
+	
+			</div>
+
+		</section>
+
+
 		<section>
 
 			<form action="#">
+				<h2>Formulaire</h2>
 				<div class="prenom">
 					<label for="prenom">Prénom :</label>
 					<input type="text" name="prenom" id="prenom" placeholder="Votre prénom" required>
+					<span></span>
 				</div>
 
 				<div class="nom">
 					<label for="nom">Nom :</label>
 					<input type="text" name="nom" id="nom" placeholder="Votre Nom" required>
-				</div>
-
-				<div class="pays">	
-					<label for="pays">Pays :</label>
-					<input type="text" name="pays" id="pays" placeholder="France">
-				</div>
-
-				<div class="codeP">
-					<label for="postal">Code postal :</label>
-					<input type="text" name="postal" id="postal" placeholder="02200">
+					<span></span>
 				</div>
 
 				<div class="adresse">
 					<label for="adresse">Adresse :</label>
-					<input type="text" name="adresse" id="adresse" placeholder="ex : 26 Rue Albert Camus">
+					<input type="text" name="adresse" id="adresse" placeholder="ex : 26 Rue Albert Camus" required>
+					<span></span>
 				</div>
+
+				<div class="ville">
+					<label for="postal">Ville :</label>
+					<input type="text" name="postal" id="postal" placeholder="ex : Paris" required>
+					<span></span>
+
+				</div>
+
+				<div class="email">
+					<label for="mail">Email :</label>
+					<input type="email" name="mail" id="mail" placeholder="ex : nom@exemple.fr" required>
+					<span></span>
+				</div>
+
+				<input type="submit" id="btnSubmit" value="Enregistrer">
 			</form>
 
 		</section>
@@ -68,7 +87,7 @@
 
     <footer>
 		<div class="conteneur-text">
-			<p><strong>Orinoco</strong></p>
+			<p><stdong>Orinoco</stdong></p>
 
 			<ul>
 				<li><i class="fab fa-twitter"></i></li>
@@ -76,9 +95,13 @@
 				<li><i class="fab fa-instagram"></i></li>
 			</ul>
 
-			<p><strong>Contact</strong></p>
+			<p><stdong>Contact</stdong></p>
 
 		</div>
 	</footer>
+
+	<script src="JS/fonction.js"></script>
+	<script src="JS/panier.js"></script>
+	
 </body>
 </html>

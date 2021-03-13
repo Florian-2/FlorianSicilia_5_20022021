@@ -1,37 +1,11 @@
-/*
-    <div class="conteneur-produit">
-        <div class="conteneur-img">
-            <img src="vcam_2.jpg" alt="">
-        </div>
-        
-        <div class="conteneur-texte-produit">
-            <h3>Du texte</h3>
-            <p>200€</p>
-        </div>
-    </div>
-
-    <div class="conteneur-form">
-        <select name="personnalisation">
-            <option>Option 1</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-        </select>
-
-        <form action="" method="POST">
-            <input type="number" id="quantiter" name="quantiter" min="1" max="200" required>
-            <input type="submit" value="Ajouter au panier">
-        </form>
-    </div>
-*/
-
 let getUrl = window.location.search;
 let url = `http://localhost:3000/api/cameras/${getUrl.substring(4, getUrl.length)}`;
 
-
+// Affichage des données pour le produit sélectionner
 fetch(url)
 .then(reponse => 
 {
-    if (reponse.ok === false) 
+    if (reponse.ok === false)
     {
         tagHtml("h3", `La requête a échoué (status requête : ${response.status})`, "#appareil");
         document.querySelector('h3').style.fontSize = "35px";
@@ -56,9 +30,9 @@ fetch(url)
                                 </div>
                                 
                                 <div class="conteneur-texte-produit">
-                                    <h3>${data.name}</h3>
+                                    <h3 id="nom_produit">${data.name}</h3>
                                     <p>${data.description}</p>
-                                    <p>${data.price} €</p>
+                                    <p id="prix">${data.price / 100} €</p>
                                 </div>
                             </div>`;
 
@@ -79,7 +53,69 @@ fetch(url)
     })
     
 })
-.catch(err => 
+.catch(error => 
 {
-    console.log("Erreur" + err.message + err.lineNumber);
+    tagHtml("h1", "Une erreur est survenue", "main", "avant");
+    document.querySelector('h1').classList.add("erreur");
+    document.querySelector('.conteneur-form').style.display = 'none';
+    console.log(error);
 });
+
+
+// LocalStorage
+
+setTimeout(() => storage(), 1000);
+
+const storage = () => 
+{
+    try 
+    {
+        const btnStorage = document.querySelector("input[type=button]");
+        const inputQuantity = document.querySelector("input[type=number]");
+        const nameProduct = document.getElementById("nom_produit");
+        const priceProduct = parseInt(document.getElementById("prix").textContent);
+
+        btnStorage.addEventListener('click', () =>
+        {
+            if (inputQuantity.value == "" || inputQuantity.value == 0 || inputQuantity.value > 200) 
+            {
+                inputQuantity.style.borderColor = 'red';
+            }
+            else
+            {
+                inputQuantity.style.borderColor = 'silver';
+
+                let conversionInput = Number(inputQuantity.value); 
+
+                let infoProduc =
+                {
+                    id : getUrl.substring(4, getUrl.length),
+                    name : nameProduct.textContent,
+                    price : priceProduct,
+                    quantity : conversionInput,
+                    totalPrice : priceProduct * conversionInput
+                }; 
+
+                let recup = JSON.parse(localStorage.getItem("panier"));
+               
+                if (recup) 
+                {
+                    recup.push(infoProduc);
+                    localStorage.setItem("panier", JSON.stringify(recup));
+                }
+                else
+                {
+                    let tab = [];
+                    tab.push(infoProduc);
+                    localStorage.setItem("panier", JSON.stringify(tab));
+                }
+            }
+        });     
+    } 
+    catch (error) 
+    {
+        tagHtml("h1", `Impossible de mettre le produit au panier`, "main");
+        document.querySelector("h1").classList.add("erreur");
+        console.log(error);
+    }
+};

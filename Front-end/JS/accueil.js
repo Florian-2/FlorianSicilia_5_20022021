@@ -25,7 +25,7 @@ fetch(url)
                                     
                                                 <div class="conteneur-texte">
                                                     <h3>${descProduc.name}</h3>
-                                                    <p>${descProduc.price} €</p>
+                                                    <p>${descProduc.price / 100} €</p>
                                                 </div>
                                             </a>
                                             
@@ -35,43 +35,3 @@ fetch(url)
     
 })
 .catch(err => console.log("Erreur" + err));
-
-
-/*
-const getCameras = async function() 
-{
-    const response = await fetch(url); 
-
-    if (response.ok) 
-    {
-        const data = await response.json();
-
-        let containerCard = document.querySelector('.conteneur-grid');
-
-        data.forEach(descProduc => 
-        {
-            containerCard.innerHTML += `<div class="carte">
-            
-                                            <a href="./produit.html?id=${descProduc._id}">
-                                                <div class="conteneur-img">
-                                                    <img src="${descProduc.imageUrl}">
-                                                </div>
-                                    
-                                                <div class="conteneur-texte">
-                                                    <h3>${descProduc.name}</h3>
-                                                    <p>${descProduc.price} €</p>
-                                                </div>
-                                            </a>
-                                            
-                                        </div>`;
-        });
-    } 
-    else 
-    {
-        console.log(`Status de la requête : ${response.status}`);
-    }  
-};
-
-getCameras();
-*/
-
