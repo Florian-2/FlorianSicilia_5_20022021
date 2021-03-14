@@ -1,0 +1,84 @@
+@import 'variable.scss';
+@import 'footer.scss';
+*
+{
+    outline: none;
+}
+
+body
+{
+    position: relative;
+}
+
+main
+{
+    min-height: 70vh;
+}
+
+footer
+{
+    position: absolute;
+    top: 100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.background-img
+{
+    background: url('/Front-end/vcam_2.jpg') center/cover;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &::before
+    {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        background-color: $primaire;
+        opacity: 0.50;
+    }
+
+    .conteneur-text
+    {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        position: absolute;
+        margin-top: -200px;
+
+        h1
+        {
+            font-family: 'Dancing Script', cursive;
+            font-size: 50px;
+        }
+    }
+}
+
+main
+{
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .container
+    {
+        width: 700px;
+        max-width: 100%;
+        border: 2px solid $primaire;
+        margin: auto;
+        padding: 10px;
+        border-radius: 7px;
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+    }
+}

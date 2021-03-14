@@ -40,45 +40,63 @@
 			</div>
 
 		</section>
-
-
+<!-- 
+			firstName: string,
+		*   lastName: string,
+		*   address: string,
+		*   city: string,
+		*   email: string -->
 		<section>
 
-			<form action="#">
-				<h2>Formulaire</h2>
-				<div class="prenom">
-					<label for="prenom">Prénom :</label>
-					<input type="text" name="prenom" id="prenom" placeholder="Votre prénom" required>
-					<span></span>
+			<div class="container-form">
+				<div class="header">
+					<h2>Formulaire</h2>
 				</div>
 
-				<div class="nom">
-					<label for="nom">Nom :</label>
-					<input type="text" name="nom" id="nom" placeholder="Votre Nom" required>
-					<span></span>
-				</div>
+				<form id="form" class="form">
+					<div class="form-control">
+						<label for="prenom">Prénom</label>
+						<input type="text" name="prenom" required>
+						<i class="fas fa-check"></i>
+						<i class="fas fa-exclamation-triangle"></i>
+						<small>message erreur</small>
+					</div>
 
-				<div class="adresse">
-					<label for="adresse">Adresse :</label>
-					<input type="text" name="adresse" id="adresse" placeholder="ex : 26 Rue Albert Camus" required>
-					<span></span>
-				</div>
+					<div class="form-control">
+						<label for="nom">Nom</label>
+						<input type="text" name="nom" required>
+						<i class="fas fa-check"></i>
+						<i class="fas fa-exclamation-triangle"></i>
+						<small>message erreur</small>
+					</div>
+					
+					<div class="form-control">
+						<label for="adresse">Adresse</label>
+						<input type="text" name="adresse" required>
+						<i class="fas fa-check"></i>
+						<i class="fas fa-exclamation-triangle"></i>
+						<small>message erreur</small>
+					</div>
+					
+					<div class="form-control">
+						<label for="ville">Ville</label>
+						<input type="text" name="ville" required>
+						<i class="fas fa-check"></i>
+						<i class="fas fa-exclamation-triangle"></i>
+						<small>message erreur</small>
+					</div>
 
-				<div class="ville">
-					<label for="postal">Ville :</label>
-					<input type="text" name="postal" id="postal" placeholder="ex : Paris" required>
-					<span></span>
+					<div class="form-control">
+						<label for="email">Email</label>
+						<input type="text" name="email" required>
+						<i class="fas fa-check"></i>
+						<i class="fas fa-exclamation-triangle"></i>
+						<small>message erreur</small>
+					</div>
 
-				</div>
-
-				<div class="email">
-					<label for="mail">Email :</label>
-					<input type="email" name="mail" id="mail" placeholder="ex : nom@exemple.fr" required>
-					<span></span>
-				</div>
-
-				<input type="submit" id="btnSubmit" value="Enregistrer">
-			</form>
+					<button>Envoyer</button>
+				</form>
+			</div>
 
 		</section>
 

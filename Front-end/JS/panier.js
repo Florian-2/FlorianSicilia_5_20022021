@@ -1,3 +1,18 @@
+/**
+ *
+ * Expects request to contain:
+ * contact: {
+ *   firstName: string,
+ *   lastName: string,
+ *   address: string,
+ *   city: string,
+ *   email: string
+ * }
+ * products: [string] <-- array of product _id
+ *
+ */
+
+
 const container_card = document.querySelector(".container_panier");
 
 // Fonction qui indique le prix total de la commande
@@ -10,8 +25,6 @@ const totalPrice = (product) =>
         count += element.totalPrice;
     });
     
-    console.log(count);
-
     const btnRemoveCart = document.createElement('p');
     btnRemoveCart.innerHTML = `<strong>Prix : ${count}€</strong>`;
     container_card.appendChild(btnRemoveCart);
@@ -34,6 +47,18 @@ const removeItems = () =>
     });
 };
 
+// Tableau (products)
+const arrProducts = (storage) =>
+{
+    let produit = [];
+    for (let i = 0; i < storage.length; i++)
+    {
+        produit.push(storage[i].id);
+    };
+    console.log(produit);
+    return produit;
+}
+
 // Parcourir le tableau d'objets contenant les produits pour ensuite les afficher dans le panier
 if (localStorage.getItem("panier")) 
 {
@@ -48,6 +73,7 @@ if (localStorage.getItem("panier"))
                                     </div>`;
     });
 
+    arrProducts(productStorage); // Renvoie un tableau avec les produits du panier
     totalPrice(productStorage); // Prix total
     removeItems(); // Btn pour vider le panier
 }
@@ -56,3 +82,134 @@ else
     tagHtml("h3", "Votre panier est vide", ".container_panier");
     document.querySelector('h3').style.fontSize = "25px";
 }
+
+
+
+// Formulaire
+const form = document.getElementById('form');
+let contact = {};
+
+form.addEventListener('submit', (e) =>
+{
+    e.preventDefault();
+    checkInput();
+
+    if (checkInput() == true) {
+        console.log(contact);
+        console.log("Fetch...");
+    } else {
+        console.log("Fetch impossible");
+    }
+});
+
+const checkInput = () =>
+{
+    const prenom = form.prenom.value.trim();
+    const nom = form.nom.value.trim();
+    const adresse = form.adresse.value.trim();
+    const ville = form.ville.value.trim();
+    const email = form.email.value.trim();
+
+    const checkFirstName = () =>
+    {
+        if (prenom === "") {
+            error(form.prenom, "Renseigner votre prénom");
+        } else if(regExpNumber(prenom)) {
+            error(form.prenom, "Ce champ ne peut pas contenir de chiffre");
+        } else {
+            contact['firstName'] = prenom;
+            success(form.prenom);
+            return true;
+        } 
+    }
+    checkFirstName()
+
+    const checkLastName = () =>
+    {
+        if (nom === "") {
+            error(form.nom, "Renseigner votre nom");
+        } else if(regExpNumber(nom)) {
+            error(form.nom, "Ce champ ne peut pas contenir de chiffre");
+        } else {
+            contact['lastName'] = nom;
+            success(form.nom);
+            return true;
+        }
+    }
+    checkLastName() 
+
+    const checkAddress = () =>
+    {
+        if (adresse === "") {
+            error(form.adresse, "Renseigner votre adresse postale")
+        } else if(!regExpNumber(adresse)) {
+            error(form.adresse, "Renseigner votre numéro, exemple : <strong>24</strong> rue Albert duc");
+        } else {
+            contact['address'] = adresse;
+            success(form.adresse);
+            return true;
+        }
+    }
+    checkAddress()
+
+    const checkCity = () =>
+    {
+        if (ville === "") {
+            error(form.ville, "Renseigner votre ville");
+        } else if(regExpNumber(ville)){
+            error(form.ville, "Ce champ ne peut pas contenir de chiffre");
+        } else {
+            contact["city"] = ville;
+            success(form.ville);
+            return true;
+        }
+    }
+    checkCity();
+
+    const checkEmail = () =>
+    {
+        if (email === "") {
+            error(form.email, "Renseigner votre adresse email");
+        } else if(!regExpEmail(email)){
+            error(form.email, "Adresse email invalide, format pris en charge : prenom@exemple.com");
+        } else {
+            contact['email'] = email;
+            success(form.email);
+            return true;
+        }
+    }
+    checkEmail();
+
+    if (checkFirstName() == true && checkLastName() == true && checkAddress() == true && checkCity() == true && checkEmail() == true)
+    {
+        return true;
+    }  
+}
+
+const error = (input, message) =>
+{
+    const formControl = input.parentElement;
+    const smallError = formControl.querySelector('small');
+
+    smallError.innerHTML = message;
+
+    formControl.className = "form-control error";
+}
+
+const success = (input) =>
+{
+    const formControl = input.parentElement;
+    formControl.className = "form-control success";
+};
+
+const regExpNumber = (input) =>
+{
+    const re = /[0-9]/.test(input); 
+    return re;
+}
+
+const regExpEmail = (email) =>
+{
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+    return re;
+};

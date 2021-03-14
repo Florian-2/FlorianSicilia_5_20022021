@@ -53,6 +53,7 @@ header {
 main {
   padding: 5px;
   padding-bottom: 20px;
+  margin: 10px;
 }
 
 section.container {
@@ -69,10 +70,6 @@ section.container .container_panier {
 section.container .container_panier h2 {
   padding-bottom: 20px;
   font-size: 25px;
-}
-
-section.container .container_panier p {
-  font-weight: bold;
 }
 
 section.container .container_panier p strong {
@@ -92,8 +89,9 @@ section.container .container_panier .carte {
   padding: 10px 20px;
 }
 
-section.container .container_panier .carte .txt_center {
-  text-align: center;
+section.container .container_panier .carte p {
+  font-weight: bold;
+  font-size: 16px;
 }
 
 section.container .container_panier .carte i {
@@ -177,57 +175,90 @@ max-width: 1000px;
         }
     }
     */
-section {
-  max-width: 1300px;
-  margin: auto;
-  padding: 15px;
-}
-
-section form {
-  max-width: 700px;
-  margin: auto;
+.container-form {
+  max-width: 100%;
+  width: 700px;
+  margin: 70px auto;
+  border: 2px solid #f3e9f1;
   border-radius: 7px;
-  border: 2px solid #f3e9f1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  overflow: hidden;
 }
 
-section form label {
+.container-form .header {
+  background-color: #f3e9f1;
+  padding: 20px 40px;
+}
+
+.container-form .form {
+  padding: 30px 25px;
+}
+
+.container-form .form .form-control {
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  position: relative;
+}
+
+.container-form .form .form-control label {
   display: inline-block;
-  width: 90px;
-  padding-bottom: 5px;
-  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 
-section form input {
+.container-form .form .form-control input {
+  width: 100%;
+  margin-bottom: 5px;
+  padding: 7px;
   border: 2px solid #f3e9f1;
+  border-radius: 5px;
+  outline: none;
+}
+
+.container-form .form .form-control i {
+  position: absolute;
+  top: 32px;
+  right: 10px;
+  visibility: hidden;
+}
+
+.container-form .form .form-control small {
+  visibility: hidden;
+}
+
+.container-form .form button {
+  width: 100%;
+  background-color: #f3e9f1;
+  border: none;
   padding: 10px;
   border-radius: 5px;
-  width: 100%;
-}
-
-section form input:focus {
-  border-color: #915cf7;
-}
-
-section form input:placeholder-shown {
-  font-size: 14px;
-}
-
-section form input[type=submit] {
-  background-color: #f3e9f1;
   cursor: pointer;
-  transition: all 150ms;
-  border: none;
+  outline: none;
 }
 
-section form input[type=submit]:active {
-  transform: scale(0.98);
+.container-form .form button:active {
+  transform: scale(0.97);
 }
 
-section form .ville, section form .email, section form .adresse, section form .prenom, section form .nom {
-  grid-column: 1 / 3;
+.container-form .form .success input {
+  border-color: #2ecc71;
+}
+
+.container-form .form .success i.fa-check {
+  visibility: visible;
+  color: #2ecc71;
+}
+
+.container-form .form .error input {
+  border-color: #e74c3c;
+}
+
+.container-form .form .error i.fa-exclamation-triangle {
+  visibility: visible;
+  color: #e74c3c;
+}
+
+.container-form .form .error small {
+  visibility: visible;
+  color: #e74c3c;
 }
 /*# sourceMappingURL=panier.css.map */
