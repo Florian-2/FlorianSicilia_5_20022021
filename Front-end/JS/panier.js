@@ -131,15 +131,8 @@ const fetchPost = (forms) =>
     .then(response => response.json())
     .then(data => 
         {
-            const inputOrderID = document.getElementById('inputOrderId'); // input hidden
+            const inputOrderID = document.querySelector('input[name="inputOrderId"]'); // input hidden
             inputOrderID.value = data.orderId;
-
-            console.log(inputOrderID.value); // Affiche : b37a8cd0-8679-11eb-83f6-bbc516e752f7
-            
-            console.log(data); // Affiche un objet contenant un objet 'contact', un tableau 'products' et l'orderID
-
-            console.log(data.contact.firstName); // Affiche le prénom saisie dans le formulaire
-
             form.submit();
         })
 }
