@@ -40,12 +40,7 @@
 			</div>
 
 		</section>
-<!-- 
-			firstName: string,
-		*   lastName: string,
-		*   address: string,
-		*   city: string,
-		*   email: string -->
+
 		<section>
 
 			<div class="container-form">
@@ -53,10 +48,10 @@
 					<h2>Formulaire</h2>
 				</div>
 
-				<form id="form" class="form">
+				<form method="GET" action="confirmation.html" id="form" class="form" >
 					<div class="form-control">
 						<label for="prenom">Prénom</label>
-						<input type="text" name="prenom" required>
+						<input type="text" name="prenom">
 						<i class="fas fa-check"></i>
 						<i class="fas fa-exclamation-triangle"></i>
 						<small>message erreur</small>
@@ -64,7 +59,7 @@
 
 					<div class="form-control">
 						<label for="nom">Nom</label>
-						<input type="text" name="nom" required>
+						<input type="text" name="nom">
 						<i class="fas fa-check"></i>
 						<i class="fas fa-exclamation-triangle"></i>
 						<small>message erreur</small>
@@ -72,7 +67,7 @@
 					
 					<div class="form-control">
 						<label for="adresse">Adresse</label>
-						<input type="text" name="adresse" required>
+						<input type="text" name="adresse">
 						<i class="fas fa-check"></i>
 						<i class="fas fa-exclamation-triangle"></i>
 						<small>message erreur</small>
@@ -80,7 +75,7 @@
 					
 					<div class="form-control">
 						<label for="ville">Ville</label>
-						<input type="text" name="ville" required>
+						<input type="text" name="ville">
 						<i class="fas fa-check"></i>
 						<i class="fas fa-exclamation-triangle"></i>
 						<small>message erreur</small>
@@ -88,12 +83,13 @@
 
 					<div class="form-control">
 						<label for="email">Email</label>
-						<input type="text" name="email" required>
+						<input type="text" name="email">
 						<i class="fas fa-check"></i>
 						<i class="fas fa-exclamation-triangle"></i>
 						<small>message erreur</small>
 					</div>
 
+					<input type="hidden" id="inputOrderId">
 					<button>Envoyer</button>
 				</form>
 			</div>

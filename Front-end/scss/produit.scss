@@ -111,6 +111,14 @@ section
                 flex-direction: column;
                 justify-content: space-between;
                 align-content: flex-start;
+                position: relative;
+
+                small
+                {
+                    position: absolute;
+                    top: 45px;
+                    left: 5px;
+                }
 
                 .btn_link
                 {
@@ -144,7 +152,7 @@ section
 
             input[type=button]
             {
-                font-size: 16px;
+               
                 cursor: pointer;
                 border: 2px solid $primaire;
                 background-color: white;

@@ -12,10 +12,9 @@
  *
  */
 
-
 const container_card = document.querySelector(".container_panier");
 
-// Fonction qui indique le prix total de la commande
+// Prix total des articles du panier
 const totalPrice = (product) =>
 {
     let count = 0;
@@ -47,16 +46,18 @@ const removeItems = () =>
     });
 };
 
-// Tableau (products)
+
+
+
+// Créer le tableau products qui sera envoyé au back-end par la suite
+let products = [];
 const arrProducts = (storage) =>
 {
-    let produit = [];
     for (let i = 0; i < storage.length; i++)
     {
-        produit.push(storage[i].id);
+        products.push(storage[i].id);
     };
-    console.log(produit);
-    return produit;
+    return products;
 }
 
 // Parcourir le tableau d'objets contenant les produits pour ensuite les afficher dans le panier
@@ -73,9 +74,9 @@ if (localStorage.getItem("panier"))
                                     </div>`;
     });
 
-    arrProducts(productStorage); // Renvoie un tableau avec les produits du panier
+    arrProducts(productStorage); // Renvoie un tableau contenant les produits du panier
     totalPrice(productStorage); // Prix total
-    removeItems(); // Btn pour vider le panier
+    removeItems(); // Bouton pour vider le panier
 }
 else
 {
@@ -94,13 +95,59 @@ form.addEventListener('submit', (e) =>
     e.preventDefault();
     checkInput();
 
-    if (checkInput() == true) {
-        console.log(contact);
-        console.log("Fetch...");
-    } else {
+    if (checkInput() == true) 
+    { 
+        if (!products.length < 1) 
+        {
+            let forms = {contact, products}
+            console.log(forms);
+            fetchPost(forms);
+        } 
+        else 
+        {
+            console.log("Aucun article");
+        }
+    } 
+    else 
+    {
         console.log("Fetch impossible");
     }
 });
+
+const fetchPost = (forms) =>
+{
+    const options = 
+    {
+        method : "POST",
+        headers : 
+        { 
+            'Accept': 'application/json',
+            'Content-Type' : 'application/json' 
+        },
+        body : JSON.stringify(forms)
+    }
+
+    fetch("http://localhost:3000/api/cameras/order", options)
+    .then(response => response.json())
+    .then(data => 
+        {
+            const inputOrderID = document.getElementById('inputOrderId'); // input hidden
+            inputOrderID.value = data.orderId;
+
+            console.log(inputOrderID.value); // Affiche : b37a8cd0-8679-11eb-83f6-bbc516e752f7
+            
+            console.log(data); // Affiche un objet contenant un objet 'contact', un tableau 'products' et l'orderID
+
+            console.log(data.contact.firstName); // Affiche le prénom saisie dans le formulaire
+
+            form.submit();
+        })
+}
+
+
+
+
+
 
 const checkInput = () =>
 {

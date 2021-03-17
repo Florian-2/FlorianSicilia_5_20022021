@@ -73,6 +73,7 @@ section.container .container_panier h2 {
 }
 
 section.container .container_panier p strong {
+  font-size: 16px;
   position: absolute;
   bottom: 10px;
   right: 0;

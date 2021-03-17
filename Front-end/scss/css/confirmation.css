@@ -69,6 +69,7 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 50px;
+  padding: 30px;
   position: absolute;
   margin-top: -200px;
 }

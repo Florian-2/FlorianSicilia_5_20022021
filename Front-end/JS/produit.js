@@ -7,7 +7,7 @@ fetch(url)
 {
     if (reponse.ok === false)
     {
-        tagHtml("h3", `La requête a échoué (status requête : ${response.status})`, "#appareil");
+        tagHtml("h3", `La requête a échoué (status requête : ${reponse.status})`, "#appareil");
         document.querySelector('h3').style.fontSize = "35px";
         return;
     }
@@ -74,16 +74,21 @@ const storage = () =>
         const inputQuantity = document.querySelector("input[type=number]");
         const nameProduct = document.getElementById("nom_produit");
         const priceProduct = parseInt(document.getElementById("prix").textContent);
+        const small = document.getElementById("mess_err");
 
+        // Ajout du produit dans le localStorage au clique du bouton "Ajouter"
         btnStorage.addEventListener('click', () =>
         {
-            if (inputQuantity.value == "" || inputQuantity.value == 0 || inputQuantity.value > 200) 
+            if (inputQuantity.value == "" || inputQuantity.value <= 0 || inputQuantity.value > 200) 
             {
                 inputQuantity.style.borderColor = 'red';
+                small.style.color = "red";
+                small.textContent = "La quantité doit être supérieur à 1 et inférieur à 200";
             }
             else
             {
                 inputQuantity.style.borderColor = 'silver';
+                small.style.visibility = "hidden";
 
                 let conversionInput = Number(inputQuantity.value); 
 
