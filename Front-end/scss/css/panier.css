@@ -224,6 +224,7 @@ max-width: 1000px;
 
 .container-form .form .form-control small {
   visibility: hidden;
+  font-size: 14px;
 }
 
 .container-form .form button {

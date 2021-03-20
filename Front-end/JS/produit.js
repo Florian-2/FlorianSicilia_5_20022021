@@ -14,7 +14,7 @@ fetch(url)
     
     reponse.json().then(data => 
     {
-        if (typeof data.imageUrl === 'undefined')
+        if (typeof data.imageUrl === 'undefined' && typeof data.name === 'undefined')
         {
             tagHtml("h1", "Erreur, vous devez d'abord sélectionner un produit sur la page d'accueil", "main", "avant");
             document.querySelector('h1').classList.add("erreur");
@@ -50,8 +50,9 @@ fetch(url)
             option.innerHTML = `${element}`;
             select.appendChild(option);
         }); 
+        
+        storage();
     })
-    
 })
 .catch(error => 
 {
@@ -64,63 +65,53 @@ fetch(url)
 
 // LocalStorage
 
-setTimeout(() => storage(), 1000);
-
 const storage = () => 
 {
-    try 
-    {
-        const btnStorage = document.querySelector("input[type=button]");
-        const inputQuantity = document.querySelector("input[type=number]");
-        const nameProduct = document.getElementById("nom_produit");
-        const priceProduct = parseInt(document.getElementById("prix").textContent);
-        const small = document.getElementById("mess_err");
+    const btnStorage = document.querySelector("input[type=button]");
+    const inputQuantity = document.querySelector("input[type=number]");
+    const nameProduct = document.getElementById("nom_produit");
+    const priceProduct = parseInt(document.getElementById("prix").textContent);
+    const small = document.getElementById("mess_err");
 
-        // Ajout du produit dans le localStorage au clique du bouton "Ajouter"
-        btnStorage.addEventListener('click', () =>
+    // Ajout du produit dans le localStorage au clique du bouton "Ajouter"
+    btnStorage.addEventListener('click', () =>
+    {
+        if (inputQuantity.value == "" || inputQuantity.value <= 0 || inputQuantity.value > 200) 
         {
-            if (inputQuantity.value == "" || inputQuantity.value <= 0 || inputQuantity.value > 200) 
+            inputQuantity.style.borderColor = 'red';
+            small.style.color = "red";
+            small.textContent = "La quantité doit être supérieur à 1 et inférieur à 200";
+        }
+        else
+        {
+            inputQuantity.style.borderColor = 'silver';
+            small.style.visibility = "hidden";
+
+            let conversionInput = Number(inputQuantity.value); 
+
+            let infoProduc =
             {
-                inputQuantity.style.borderColor = 'red';
-                small.style.color = "red";
-                small.textContent = "La quantité doit être supérieur à 1 et inférieur à 200";
+                id : getUrl.substring(4, getUrl.length),
+                name : nameProduct.textContent,
+                price : priceProduct,
+                quantity : conversionInput,
+                totalPrice : priceProduct * conversionInput
+            }; 
+
+            // Créer un tableau contenant les produits qui seront stocker dans localStorage
+            let recup = JSON.parse(localStorage.getItem("panier"));
+            
+            if (recup) 
+            {
+                recup.push(infoProduc);
+                localStorage.setItem("panier", JSON.stringify(recup));
             }
             else
             {
-                inputQuantity.style.borderColor = 'silver';
-                small.style.visibility = "hidden";
-
-                let conversionInput = Number(inputQuantity.value); 
-
-                let infoProduc =
-                {
-                    id : getUrl.substring(4, getUrl.length),
-                    name : nameProduct.textContent,
-                    price : priceProduct,
-                    quantity : conversionInput,
-                    totalPrice : priceProduct * conversionInput
-                }; 
-
-                let recup = JSON.parse(localStorage.getItem("panier"));
-               
-                if (recup) 
-                {
-                    recup.push(infoProduc);
-                    localStorage.setItem("panier", JSON.stringify(recup));
-                }
-                else
-                {
-                    let tab = [];
-                    tab.push(infoProduc);
-                    localStorage.setItem("panier", JSON.stringify(tab));
-                }
+                let tab = [];
+                tab.push(infoProduc);
+                localStorage.setItem("panier", JSON.stringify(tab));
             }
-        });     
-    } 
-    catch (error) 
-    {
-        tagHtml("h1", `Impossible de mettre le produit au panier`, "main");
-        document.querySelector("h1").classList.add("erreur");
-        console.log(error);
-    }
-};
+        }
+    });
+}        

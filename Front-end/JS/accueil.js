@@ -3,7 +3,7 @@ const url = `http://localhost:3000/api/cameras`;
 fetch(url)
 .then(response => 
 {
-    if (response.ok === false) 
+    if (response.ok === false)
     {
         tagHtml("h3", `La requête a échoué (status requête : ${response.status})`, "#appareil");
         document.querySelector('h3').style.fontSize = "35px";

@@ -1,17 +1,3 @@
-/**
- *
- * Expects request to contain:
- * contact: {
- *   firstName: string,
- *   lastName: string,
- *   address: string,
- *   city: string,
- *   email: string
- * }
- * products: [string] <-- array of product _id
- *
- */
-
 const container_card = document.querySelector(".container_panier");
 
 // Prix total des articles du panier
@@ -35,7 +21,7 @@ const removeItems = () =>
     const btnRemoveCart = document.createElement('button');
     btnRemoveCart.textContent = "Vider le panier"
     btnRemoveCart.classList.add('btnSupprimer');
-    container_card.appendChild(btnRemoveCart);    
+    container_card.appendChild(btnRemoveCart);
     
     const btnRemoveAllItem = document.querySelector('.btnSupprimer');
 
@@ -45,9 +31,6 @@ const removeItems = () =>
         location.reload();
     });
 };
-
-
-
 
 // Créer le tableau products qui sera envoyé au back-end par la suite
 let products = [];
@@ -84,11 +67,18 @@ else
     document.querySelector('h3').style.fontSize = "25px";
 }
 
-
-
 // Formulaire
+/*
+    Fonctionnement de la validation du formulaire :
+
+    Pour la validation des champs il existe 2 fonctions (error et success), ces fonctions servent uniquement à gérer les indications visuel grâce à un code couleur et des icons.
+
+    Pour les RegExp il existe 3 fonctions (regExpNumber, regExpEmail, regExpScript), ces fonctions sont là pour gérer les valeurs des champs (email valide ou non ? etc...)
+
+    Si la valeur du champ est valide alors sa valeur sera stocker dans l'objet "contact", si toutes les valeurs sont valides et que le panier n'est pas vide alors le formulaire sera envoyer au back-end
+*/
 const form = document.getElementById('form');
-let contact = {};
+let contact = {}; // Objet qui va contenir les données du formulaire
 
 form.addEventListener('submit', (e) =>
 {
@@ -99,18 +89,10 @@ form.addEventListener('submit', (e) =>
     { 
         if (!products.length < 1) 
         {
-            let forms = {contact, products}
+            let forms = {contact, products};
             console.log(forms);
             fetchPost(forms);
         } 
-        else 
-        {
-            console.log("Aucun article");
-        }
-    } 
-    else 
-    {
-        console.log("Fetch impossible");
     }
 });
 
@@ -131,16 +113,11 @@ const fetchPost = (forms) =>
     .then(response => response.json())
     .then(data => 
         {
-            const inputOrderID = document.querySelector('input[name="inputOrderId"]'); // input hidden
+            const inputOrderID = document.querySelector('input[name="inputOrderId"]');
             inputOrderID.value = data.orderId;
             form.submit();
         })
 }
-
-
-
-
-
 
 const checkInput = () =>
 {
@@ -156,6 +133,8 @@ const checkInput = () =>
             error(form.prenom, "Renseigner votre prénom");
         } else if(regExpNumber(prenom)) {
             error(form.prenom, "Ce champ ne peut pas contenir de chiffre");
+        } else if(!regExpScript(prenom)) {
+            error(form.prenom, "Script détecter");
         } else {
             contact['firstName'] = prenom;
             success(form.prenom);
@@ -170,6 +149,8 @@ const checkInput = () =>
             error(form.nom, "Renseigner votre nom");
         } else if(regExpNumber(nom)) {
             error(form.nom, "Ce champ ne peut pas contenir de chiffre");
+        } else if(!regExpScript(nom)) {
+            error(form.nom, "Script détecter");
         } else {
             contact['lastName'] = nom;
             success(form.nom);
@@ -184,6 +165,8 @@ const checkInput = () =>
             error(form.adresse, "Renseigner votre adresse postale")
         } else if(!regExpNumber(adresse)) {
             error(form.adresse, "Renseigner votre numéro, exemple : <strong>24</strong> rue Albert duc");
+        } else if(!regExpScript(adresse)) {
+            error(form.adresse, "Script détecter");
         } else {
             contact['address'] = adresse;
             success(form.adresse);
@@ -198,6 +181,8 @@ const checkInput = () =>
             error(form.ville, "Renseigner votre ville");
         } else if(regExpNumber(ville)){
             error(form.ville, "Ce champ ne peut pas contenir de chiffre");
+        } else if(!regExpScript(ville)) {
+            error(form.ville, "Script détecter");
         } else {
             contact["city"] = ville;
             success(form.ville);
@@ -212,6 +197,8 @@ const checkInput = () =>
             error(form.email, "Renseigner votre adresse email");
         } else if(!regExpEmail(email)){
             error(form.email, "Adresse email invalide, format pris en charge : prenom@exemple.com");
+        } else if(!regExpScript(email)) {
+            error(form.email, "Script détecter");
         } else {
             contact['email'] = email;
             success(form.email);
@@ -253,3 +240,9 @@ const regExpEmail = (email) =>
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
     return re;
 };
+
+const regExpScript = (inputScript) =>
+{
+    const re = /^[^\\\/&]*$/.test(inputScript);
+    return re;
+}

@@ -129,6 +129,7 @@ section .conteneur-grid .conteneur-form form small {
   position: absolute;
   top: 45px;
   left: 5px;
+  font-size: 14px;
 }
 
 section .conteneur-grid .conteneur-form form .btn_link {
