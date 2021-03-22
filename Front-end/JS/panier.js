@@ -10,9 +10,10 @@ const totalPrice = (product) =>
         count += element.totalPrice;
     });
     
-    const btnRemoveCart = document.createElement('p');
-    btnRemoveCart.innerHTML = `<strong>Prix : ${count}€</strong>`;
-    container_card.appendChild(btnRemoveCart);
+    const displayPrice = document.createElement('p');
+    displayPrice.classList.add('price');
+    displayPrice.innerHTML = `Prix : <span id="price">${count}</span>€`;
+    container_card.appendChild(displayPrice);
 };
 
 // Vider le panier
@@ -66,15 +67,12 @@ else
     tagHtml("h3", "Votre panier est vide", ".container_panier");
     document.querySelector('h3').style.fontSize = "25px";
 }
-
 // Formulaire
 /*
     Fonctionnement de la validation du formulaire :
 
     Pour la validation des champs il existe 2 fonctions (error et success), ces fonctions servent uniquement à gérer les indications visuel grâce à un code couleur et des icons.
-
     Pour les RegExp il existe 3 fonctions (regExpNumber, regExpEmail, regExpScript), ces fonctions sont là pour gérer les valeurs des champs (email valide ou non ? etc...)
-
     Si la valeur du champ est valide alors sa valeur sera stocker dans l'objet "contact", si toutes les valeurs sont valides et que le panier n'est pas vide alors le formulaire sera envoyer au back-end
 */
 const form = document.getElementById('form');
@@ -90,7 +88,7 @@ form.addEventListener('submit', (e) =>
         if (!products.length < 1) 
         {
             let forms = {contact, products};
-            console.log(forms);
+            // console.log(forms);
             fetchPost(forms);
         } 
     }
@@ -114,10 +112,16 @@ const fetchPost = (forms) =>
     .then(data => 
         {
             const inputOrderID = document.querySelector('input[name="inputOrderId"]');
+            const inputPrice = document.querySelector('input[name="inputPrice"]');
+            let priceTo = document.getElementById('price').textContent;
+            priceTo = Number(priceTo);
+
             inputOrderID.value = data.orderId;
+            inputPrice.value = priceTo;
+
             form.submit();
         })
-}
+};
 
 const checkInput = () =>
 {
@@ -141,7 +145,7 @@ const checkInput = () =>
             return true;
         } 
     }
-    checkFirstName()
+    checkFirstName();
 
     const checkLastName = () =>
     {
@@ -157,7 +161,7 @@ const checkInput = () =>
             return true;
         }
     }
-    checkLastName() 
+    checkLastName();
 
     const checkAddress = () =>
     {
@@ -173,7 +177,7 @@ const checkInput = () =>
             return true;
         }
     }
-    checkAddress()
+    checkAddress();
 
     const checkCity = () =>
     {
@@ -221,7 +225,7 @@ const error = (input, message) =>
     smallError.innerHTML = message;
 
     formControl.className = "form-control error";
-}
+};
 
 const success = (input) =>
 {
@@ -233,7 +237,7 @@ const regExpNumber = (input) =>
 {
     const re = /[0-9]/.test(input); 
     return re;
-}
+};
 
 const regExpEmail = (email) =>
 {
@@ -245,4 +249,4 @@ const regExpScript = (inputScript) =>
 {
     const re = /^[^\\\/&]*$/.test(inputScript);
     return re;
-}
+};

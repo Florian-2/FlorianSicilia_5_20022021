@@ -72,7 +72,8 @@ section.container .container_panier h2 {
   font-size: 25px;
 }
 
-section.container .container_panier p strong {
+section.container .container_panier p.price {
+  font-weight: bold;
   font-size: 16px;
   position: absolute;
   bottom: 10px;
