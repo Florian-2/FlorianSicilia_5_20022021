@@ -181,7 +181,7 @@ max-width: 1000px;
     .header
     {
         background-color: $primaire;
-        padding: 20px 40px;
+        padding: 20px 25px;
     }
 
     .form
@@ -230,6 +230,7 @@ max-width: 1000px;
         {
             width: 100%;
             background-color: $primaire;
+            font-weight: bold;
             border: none;
             padding: 10px;
             border-radius: 5px;

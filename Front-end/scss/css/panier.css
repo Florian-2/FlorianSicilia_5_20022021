@@ -188,7 +188,7 @@ max-width: 1000px;
 
 .container-form .header {
   background-color: #f3e9f1;
-  padding: 20px 40px;
+  padding: 20px 25px;
 }
 
 .container-form .form {
@@ -231,6 +231,7 @@ max-width: 1000px;
 .container-form .form button {
   width: 100%;
   background-color: #f3e9f1;
+  font-weight: bold;
   border: none;
   padding: 10px;
   border-radius: 5px;

@@ -7,8 +7,9 @@ fetch(url)
 {
     if (reponse.ok === false)
     {
-        tagHtml("h3", `La requête a échoué (status requête : ${reponse.status})`, "#appareil");
-        document.querySelector('h3').style.fontSize = "35px";
+        tagHtml("h3", `La requête a échoué (status requête : ${reponse.status})`, "main");
+        document.querySelector('h3').classList.add("erreur");
+        document.querySelector('.conteneur-form').style.display = 'none';
         return;
     }
     

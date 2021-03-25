@@ -76,7 +76,8 @@ else
     Si la valeur du champ est valide alors sa valeur sera stocker dans l'objet "contact", si toutes les valeurs sont valides et que le panier n'est pas vide alors le formulaire sera envoyer au back-end
 */
 const form = document.getElementById('form');
-let contact = {}; // Objet qui va contenir les données du formulaire
+// "contact" Objet qui va contenir les données du formulaire
+let contact = {}; 
 
 form.addEventListener('submit', (e) =>
 {
@@ -88,7 +89,6 @@ form.addEventListener('submit', (e) =>
         if (!products.length < 1) 
         {
             let forms = {contact, products};
-            // console.log(forms);
             fetchPost(forms);
         } 
     }
