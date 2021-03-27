@@ -67,6 +67,7 @@ else
     tagHtml("h3", "Votre panier est vide", ".container_panier");
     document.querySelector('h3').style.fontSize = "25px";
 }
+
 // Formulaire
 /*
     Fonctionnement de la validation du formulaire :
@@ -113,11 +114,11 @@ const fetchPost = (forms) =>
         {
             const inputOrderID = document.querySelector('input[name="inputOrderId"]');
             const inputPrice = document.querySelector('input[name="inputPrice"]');
-            let priceTo = document.getElementById('price').textContent;
-            priceTo = Number(priceTo);
+            let priceTotal = document.getElementById('price').textContent;
+            priceTotal = Number(priceTotal);
 
             inputOrderID.value = data.orderId;
-            inputPrice.value = priceTo;
+            inputPrice.value = priceTotal;
 
             form.submit();
         })
@@ -200,7 +201,7 @@ const checkInput = () =>
         if (email === "") {
             error(form.email, "Renseigner votre adresse email");
         } else if(!regExpEmail(email)){
-            error(form.email, "Adresse email invalide, format pris en charge : prenom@exemple.com");
+            error(form.email, "Adresse email invalide, format pris en charge : <b>prenom@exemple.com</b>");
         } else if(!regExpScript(email)) {
             error(form.email, "Script détecter");
         } else {

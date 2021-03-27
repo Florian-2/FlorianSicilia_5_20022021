@@ -1,9 +1,6 @@
 const searchParams = new URLSearchParams(window.location.search);
 
-// Récupère les paramètres de l'url
-searchParams.has('inputOrderId');
-searchParams.has('inputPrice');
-searchParams.has('prenom');
+// Récupérer les paramètres GET de l'url
 const orderID = searchParams.get('inputOrderId');
 const price = searchParams.get('inputPrice');
 const firstName = searchParams.get('prenom');
