@@ -7,7 +7,7 @@ const searchFirstName = searchParams.has('prenom');
 
 if (!searchOrderIDr || !searchPrice || !searchFirstName) 
 {
-    window.location.href = "http://127.0.0.1:5501/Front-end/index.html"
+    window.location.href = "index.html"
 }
 else
 {
