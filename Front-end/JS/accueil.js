@@ -1,20 +1,21 @@
 const url = `http://localhost:3000/api/cameras`;
 
+// Requête GET serveur, retourne les articles disponible à l'achat
 fetch(url)
 .then(response => 
 {
-    if (response.ok === false)
+    if (response.ok === false) // Gère les requêtes qui ont échoué
     {
         tagHtml("h3", `La requête a échoué (status requête : ${response.status})`, "#appareil");
         document.querySelector('h3').style.fontSize = "35px";
         return;
     }
     
-    response.json().then(data => 
+    response.json().then(data => // Récupère les données de l'API
     {
         let containerCard = document.querySelector('.conteneur-grid');
 
-        data.forEach(descProduc => 
+        data.forEach(descProduc => // Boucle sur les données reçu pour généré des cartes HTML
         {
             containerCard.innerHTML += `<div class="carte">
             

@@ -95,6 +95,7 @@ form.addEventListener('submit', (e) =>
     }
 });
 
+// Envoi les données (articles, formulaire) au serveur
 const fetchPost = (forms) =>
 {
     const options = 
@@ -112,6 +113,7 @@ const fetchPost = (forms) =>
     .then(response => response.json())
     .then(data => 
         {
+            // Récupère l'identifiant et le prix de la commande qui seront transmis via l'URL
             const inputOrderID = document.querySelector('input[name="inputOrderId"]');
             const inputPrice = document.querySelector('input[name="inputPrice"]');
             let priceTotal = document.getElementById('price').textContent;
@@ -124,6 +126,7 @@ const fetchPost = (forms) =>
         })
 };
 
+// Vérifie les données saisie par l'utilisateur
 const checkInput = () =>
 {
     const prenom = form.prenom.value.trim();
@@ -132,6 +135,7 @@ const checkInput = () =>
     const ville = form.ville.value.trim();
     const email = form.email.value.trim();
 
+    // Vérifie le prénom
     const checkFirstName = () =>
     {
         if (prenom === "") {
@@ -148,6 +152,7 @@ const checkInput = () =>
     }
     checkFirstName();
 
+    // Vérifie le Nom
     const checkLastName = () =>
     {
         if (nom === "") {
@@ -164,6 +169,7 @@ const checkInput = () =>
     }
     checkLastName();
 
+    // Vérifie l'adresse postal 
     const checkAddress = () =>
     {
         if (adresse === "") {
@@ -180,6 +186,7 @@ const checkInput = () =>
     }
     checkAddress();
 
+    // Vérifie la ville
     const checkCity = () =>
     {
         if (ville === "") {
@@ -196,6 +203,7 @@ const checkInput = () =>
     }
     checkCity();
 
+    // Vérifie l'adresse email
     const checkEmail = () =>
     {
         if (email === "") {
@@ -212,12 +220,14 @@ const checkInput = () =>
     }
     checkEmail();
 
+    // Retourne "true" si les données du formulaire sont valide
     if (checkFirstName() == true && checkLastName() == true && checkAddress() == true && checkCity() == true && checkEmail() == true)
     {
         return true;
     }  
 }
 
+// Gère l'affichage des erreurs
 const error = (input, message) =>
 {
     const formControl = input.parentElement;
@@ -228,12 +238,14 @@ const error = (input, message) =>
     formControl.className = "form-control error";
 };
 
+// Gère l'affichage de la validation des informations
 const success = (input) =>
 {
     const formControl = input.parentElement;
     formControl.className = "form-control success";
 };
 
+// Expression régulière (3)
 const regExpNumber = (input) =>
 {
     const re = /[0-9]/.test(input); 

@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<!-- Police d'écriture -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+	
+	<!-- Fichers CSS (scss) -->
 	<link rel="stylesheet" href="scss/css/reset.css">
 	<link rel="stylesheet" href="scss/css/menu.css" />
 	<link rel="stylesheet" href="scss/css/produit.css">
@@ -15,6 +17,7 @@
 </head>
 <body>
 
+	<!-- HEADER : lien de retour vers la page d'accueil et la page panier -->
     <header>
 
 		<div class="container-menu">
@@ -29,18 +32,18 @@
 		</div>
 
 	</header>
+	<!-- FIN HEADER -->
 
 	<main>
 		
+		<!-- SECTION : Affiche le produit sélectionné depuis la page d'accueil -->
 		<section>
 
 			<div class="conteneur-grid">
 
-				<div class="conteneur-produit">
+				<div class="conteneur-produit"></div> <!-- img, description, prix du produit -->
 
-					
-				</div>
-
+				<!-- Option disponible concernant le produit, choix de la quantité, btn panier -->
 				<div class="conteneur-form">
 					<form action="#">
 						<input type="number" id="quantiter" name="quantiter" min="1" max="200" title="Entre 1 et 200" value="1" required>
@@ -58,6 +61,7 @@
 
 	</main>
 
+	<!-- FOOTER : liens contact et réseaux sociaux -->
 	<footer>
 		<div class="conteneur-text">
 			<p><strong>Orinoco</strong></p>
@@ -69,10 +73,10 @@
 			</ul>
 
 			<p><strong>Contact</strong></p>
-
 		</div>
 	</footer>
 
+	<!-- Fichiers JavaScript -->
 	<script src="JS/produit.js"></script>
 	<script src="JS/fonction.js"></script>
 

@@ -1,11 +1,11 @@
 let getUrl = window.location.search;
 let url = `http://localhost:3000/api/cameras/${getUrl.substring(4, getUrl.length)}`;
 
-// Affichage des données pour le produit sélectionner
+// Affichage des données pour le produit sélectionné
 fetch(url)
 .then(reponse => 
 {
-    if (reponse.ok === false)
+    if (reponse.ok === false) // Gère les requêtes qui ont échoué
     {
         tagHtml("h3", `La requête a échoué (status requête : ${reponse.status})`, "main");
         document.querySelector('h3').classList.add("erreur");
@@ -13,7 +13,7 @@ fetch(url)
         return;
     }
     
-    reponse.json().then(data => 
+    reponse.json().then(data => // Récupère les données de l'API 
     {
         if (typeof data.imageUrl === 'undefined' && typeof data.name === 'undefined')
         {
@@ -24,7 +24,8 @@ fetch(url)
         }
 
         let divGrid = document.querySelector('.conteneur-produit');
-        
+
+        // Boucle sur les données reçu pour générer des cartes HTML
         divGrid.innerHTML += `<div class="conteneur-produit">
                                 <div class="conteneur-img">
                                     <img src="${data.imageUrl}">
@@ -44,6 +45,7 @@ fetch(url)
 
         let select = document.querySelector('.conteneur-form select');
 
+        // Affiche les options disponible pour le produit en question
         data.lenses.forEach(element => 
         {
             let option = document.createElement('option');
@@ -65,7 +67,6 @@ fetch(url)
 
 
 // LocalStorage
-
 const storage = () => 
 {
     const btnStorage = document.querySelector("input[type=button]");
@@ -77,6 +78,7 @@ const storage = () =>
     // Ajout du produit dans le localStorage au clique du bouton "Ajouter"
     btnStorage.addEventListener('click', () =>
     {
+        // Vérifie la quantité choisi par l'utilisateur
         if (inputQuantity.value == "" || inputQuantity.value <= 0 || inputQuantity.value > 200) 
         {
             inputQuantity.style.borderColor = 'red';
@@ -88,6 +90,7 @@ const storage = () =>
             inputQuantity.style.borderColor = 'silver';
             small.style.visibility = "hidden";
 
+            // Récupère des infos concernant le produit
             let conversionInput = Number(inputQuantity.value); 
 
             let infoProduc =
