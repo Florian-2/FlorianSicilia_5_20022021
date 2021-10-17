@@ -15,6 +15,8 @@ fetch(url)
     
     reponse.json().then(data => // Récupère les données de l'API 
     {
+        console.log(data);
+
         if (typeof data.imageUrl === 'undefined' && typeof data.name === 'undefined')
         {
             tagHtml("h1", "Erreur, vous devez d'abord sélectionner un produit sur la page d'accueil", "main", "avant");
