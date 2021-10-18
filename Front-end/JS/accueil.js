@@ -17,9 +17,10 @@ fetch(url)
 
         data.forEach(descProduc => // Boucle sur les données reçu pour généré des cartes HTML
         {
+            // ./produit.html?id=${descProduc._id}
             containerCard.innerHTML += `<div class="carte">
             
-                                            <a href="./produit.html?id=${descProduc._id}">
+                                            <a href="produit.html?id=${descProduc._id}">
                                                 <div class="conteneur-img">
                                                     <img src="${descProduc.imageUrl}">
                                                 </div>

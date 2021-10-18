@@ -1,5 +1,7 @@
-let getUrl = window.location.search;
-let url = `http://localhost:3000/api/cameras/${getUrl.substring(4, getUrl.length)}`;
+const params = new URLSearchParams(window.location.search);
+const getParamId = params.get('id');
+
+let url = `http://localhost:3000/api/cameras/${getParamId}`;
 
 // Affichage des données pour le produit sélectionné
 fetch(url)
@@ -97,7 +99,7 @@ const storage = () =>
 
             let infoProduc =
             {
-                id : getUrl.substring(4, getUrl.length),
+                id : getParamId,
                 name : nameProduct.textContent,
                 price : priceProduct,
                 quantity : conversionInput,
